@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block content%}
+<article class="portfolio" data-page="portfolio">
+
+    <header>
+      <h2 class="h2 article-title">Projects</h2>
+    </header>
+
+    <section class="projects">
+
+      <ul class="filter-list">
+
+        <li class="filter-item">
+          <button class="active" data-filter-btn>All</button>
+        </li>
+
+        <!-- <li class="filter-item">
+          <button data-filter-btn>Frontend</button>
+        </li>
+
+        <li class="filter-item">
+          <button data-filter-btn>Backend</button>
+        </li>
+
+        <li class="filter-item">
+          <button data-filter-btn>DevOps</button>
+        </li>
+
+        <li class="filter-item">
+          <button data-filter-btn>API</button>
+        </li> -->
+
+        
+      </ul>
+
+      <div class="filter-select-box">
+
+        <button class="filter-select" data-select>
+
+          <div class="select-value" data-selecct-value>Select category</div>
+
+          <div class="select-icon">
+            <ion-icon name="chevron-down"></ion-icon>
+          </div>
+
+        </button>
+
+        <ul class="select-list">
+
+          <li class="select-item">
+            <button data-select-item>All</button>
+          </li>
+
+          <!-- <li class="select-item">
+            <button data-select-item>Frontend</button>
+          </li>
+
+          <li class="select-item">
+            <button data-select-item>Backend</button>
+          </li>
+
+          <li class="select-item">
+            <button data-select-item>DevOps</button>
+          </li>
+
+          <li class="select-item">
+            <button data-select-item>API</button>
+          </li>
+        </ul> -->
+
+      </div>
+
+      <ul class="project-list">
+
+        <li class="project-item  active" data-filter-item data-category="Frontend">
+          <a href="https://github.com/kiptoobarchok/AirBnB_clone">
+
+            <figure class="project-img">
+              <div class="project-item-icon-box">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+
+              <!-- <img src="./images/airbnb.jpg" alt="airbnb" loading="lazy"> -->
+            </figure>
+
+            <h3 class="project-title">AirBnB Web Clone</h3>
+
+            <p class="project-category">Web development</p>
+
+          </a>
+        </li>
+
+        <li class="project-item  active" data-filter-item data-category="web development">
+          <a href="https://github.com/kiptoobarchok/MAY-kbrk">
+
+            <figure class="project-img">
+              <div class="project-item-icon-box">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+
+              <!-- <img src="./assets/images/project-2.png" alt="orizon" loading="lazy"> -->
+            </figure>
+
+            <h3 class="project-title">MAY-kaborok Website</h3>
+
+            <p class="project-category">Web development</p>
+
+          </a>
+        </li>
+
+        </li>
+
+        <li class="project-item  active" data-filter-item data-category="web design">
+          <a href="#">
+
+            <figure class="project-img">
+              <div class="project-item-icon-box">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+
+              <!-- <img src="./images/weather.jpg" alt="weather-app" loading="lazy"> -->
+            </figure>
+
+            <h3 class="project-title">simple Posts Web app</h3>
+
+            <p class="project-category">Web applications</p>
+
+          </a>
+        </li>
+
+        <!-- <li class="project-item  active" data-filter-item data-category="web development">
+          <a href="#">
+
+            <figure class="project-img">
+              <div class="project-item-icon-box">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+
+              <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
+            </figure>
+
+            <h3 class="project-title">Summary</h3>
+
+            <p class="project-category">Web development</p>
+
+          </a>
+        </li> -->
+
+      </ul>
+
+    </section>
+
+  </article>
+{% endblock content %}

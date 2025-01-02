@@ -1,4 +1,4 @@
-# Deployed via netlify
+# Deployed on AWS server
 
 - Static
 - To see live visit [kiptoobarchok.tech](http://18.210.17.50)

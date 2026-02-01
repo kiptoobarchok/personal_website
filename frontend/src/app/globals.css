@@ -1,0 +1,88 @@
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Fira+Mono:wght@400;500&family=Orbitron:wght@700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --hacker-green: #00FF41;
+  --deep-onyx: #16161a;
+  --glass-bg: rgba(22, 22, 26, 0.85);
+  --glass-blur: 12px;
+  --chrome: linear-gradient(90deg, #e0e0e0 0%, #b0b0b0 100%);
+}
+
+body {
+  background: var(--deep-onyx);
+  color: var(--hacker-green);
+  font-family: 'JetBrains Mono', monospace;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.glass-terminal {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.7);
+  border: 2px solid #222;
+  position: absolute;
+  top: 10vh;
+  left: 10vw;
+  width: 600px;
+  min-width: 320px;
+  min-height: 300px;
+  max-width: 90vw;
+  max-height: 80vh;
+  z-index: 10;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.glass-terminal:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.12) 0px,
+    rgba(0,0,0,0.12) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  z-index: 2;
+  mix-blend-mode: overlay;
+}
+
+.glass-terminal.flicker {
+  animation: flicker 1.5s infinite linear;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  48% { opacity: 0.98; }
+  50% { opacity: 0.96; }
+  52% { opacity: 1; }
+}
+
+.terminal-header {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  background: var(--chrome);
+  color: #222;
+  padding: 0.75em 1em;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  cursor: move;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.terminal-content {
+  padding: 1.5em 1em 1em 1em;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 3;
+  min-height: 200px;
+}

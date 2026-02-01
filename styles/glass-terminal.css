@@ -1,0 +1,160 @@
+/* Glass-Terminal CSS Architecture
+   - Frosted glass effect
+   - CRT scanlines & flicker
+   - Hacker Green on Deep Onyx
+   - Chrome accents, glossy buttons, blobs
+   - JetBrains Mono & Orbitron fonts
+*/
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@700&display=swap');
+
+:root {
+  --hacker-green: #00FF41;
+  --deep-onyx: #16161a;
+  --glass-bg: rgba(22, 22, 26, 0.85);
+  --glass-blur: 12px;
+  --chrome: linear-gradient(90deg, #e0e0e0 0%, #b0b0b0 100%);
+}
+
+body {
+  background: var(--deep-onyx);
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--hacker-green);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.glass-terminal {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.7);
+  border: 2px solid #222;
+  position: absolute;
+  top: 10vh;
+  left: 10vw;
+  width: 600px;
+  min-width: 320px;
+  min-height: 300px;
+  max-width: 90vw;
+  max-height: 80vh;
+  z-index: 10;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.glass-terminal:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.12) 0px,
+    rgba(0,0,0,0.12) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  z-index: 2;
+  mix-blend-mode: overlay;
+}
+
+.glass-terminal.flicker {
+  animation: flicker 1.5s infinite linear;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  48% { opacity: 0.98; }
+  50% { opacity: 0.96; }
+  52% { opacity: 1; }
+}
+
+.terminal-header {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  background: var(--chrome);
+  color: #222;
+  padding: 0.75em 1em;
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  cursor: move;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.terminal-content {
+  padding: 1.5em 1em 1em 1em;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 3;
+  min-height: 200px;
+}
+
+.glossy-btn {
+  font-family: 'Orbitron', sans-serif;
+  background: var(--chrome);
+  color: #222;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  padding: 0.5em 1.2em;
+  margin: 0.5em;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.glossy-btn:hover {
+  transform: scale(1.05) skewX(-2deg);
+  box-shadow: 0 4px 16px rgba(0,255,65,0.3);
+  filter: url(#glitch);
+}
+
+/* Matrix-style data stream background */
+.matrix-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.18;
+}
+
+/* Liquid blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00FF41 0%, #16161a 100%);
+  filter: blur(24px);
+  opacity: 0.5;
+  animation: blobMove 18s infinite alternate ease-in-out;
+}
+
+@keyframes blobMove {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(60px) scale(1.2); }
+}
+
+/* Glitch effect for links */
+.glitch-link {
+  position: relative;
+  color: var(--hacker-green);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.glitch-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #00FF41, 2px 0 #fff, -2px 0 #00FF41;
+  animation: glitch 0.4s linear;
+}
+@keyframes glitch {
+  0% { text-shadow: 2px 0 #fff, -2px 0 #00FF41; }
+  20% { text-shadow: -2px 0 #fff, 2px 0 #00FF41; }
+  40% { text-shadow: 2px 0 #00FF41, -2px 0 #fff; }
+  60% { text-shadow: -2px 0 #00FF41, 2px 0 #fff; }
+  80% { text-shadow: 2px 0 #fff, -2px 0 #00FF41; }
+  100% { text-shadow: 0 0 8px #00FF41; }
+}
